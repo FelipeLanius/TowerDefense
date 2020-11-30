@@ -27,9 +27,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2633811048552697817}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.755}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 4, y: 1, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 35125b8bfd37927469790feb9eed40c9, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,5 +106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1e8e40bc3e7bc44a2a59da0f71b288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 0.2691349, g: 0.9056604, b: 0.28362674, a: 0}
-  positionOffSet: {x: 0, y: 1, z: 0}
+  noBuildColor: {r: 0.9622642, g: 0.049928807, b: 0.049928807, a: 0}
+  hoverColor: {r: 0.26738757, g: 0.9339623, b: 0.12775902, a: 0}
+  positionOffSet: {x: 0, y: 0, z: 0}
+  turret: {fileID: 0}
+  turretBlueprint:
+    prefab: {fileID: 5508915617433863616, guid: 822072faa01aa4545b3514bf98f7f1a7,
+      type: 3}
+    cost: 250
