@@ -12,6 +12,10 @@ public class Turrent : MonoBehaviour
     public float fireRate = 1f;
     private float FireCountdown = 0f;
 
+    [Header("Use Laser")]
+    public bool useLaser = false;
+    public LineRenderer lineRenderer;
+
     [Header("Unity Setup Fields")]
 
     public string enemyTag = "Enemy";
@@ -57,21 +61,48 @@ public class Turrent : MonoBehaviour
     void Update()
     {
         if (target == null)
+        {
+            if (useLaser){
+                if (lineRenderer.enabled)
+                    lineRenderer.enabled = false;
+            }
             return;
+        }
+            
 
-        // Target Lock
+        TargetLock();
+
+        if (useLaser)
+        {
+            Laser();
+        }
+        else
+        {
+            if (FireCountdown <= 0f)
+            {
+                Shoot();
+                FireCountdown = 1f / fireRate;
+            }
+
+            FireCountdown -= Time.deltaTime;
+        }
+    }
+
+    void TargetLock()
+    {
         Vector3 dir = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+    }
 
-        if(FireCountdown <= 0f)
-        {
-            Shoot();
-            FireCountdown = 1f / fireRate;
-        }
+    void Laser()
+    {
+        if (!lineRenderer.enabled)
+            lineRenderer.enabled = true;
 
-        FireCountdown -= Time.deltaTime;
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, target.position);
     }
 
     void Shoot()
